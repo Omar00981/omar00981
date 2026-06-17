@@ -1,0 +1,585 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <title>Elements — Omar Laila</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #000000;
+      --bg2: #0a0a0a;
+      --surface: #1a1a1a;
+      --surface2: #222222;
+      --border: rgba(255,255,255,0.08);
+      --text: #f5f5f7;
+      --text-dim: #a1a1a6;
+      --text-dimmer: #6e6e73;
+      --accent: #2997ff;
+      --white: #ffffff;
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(0,0,0,0.72);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid var(--border);
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      max-width: 980px;
+      width: 100%;
+      padding: 0 24px;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .nav-back {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      transition: gap 0.2s;
+    }
+    .nav-back:hover { gap: 10px; }
+    .nav-back i { font-size: 11px; }
+
+    /* LAYOUT */
+    .page-wrap {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 100px 24px 120px;
+    }
+
+    /* PAGE HEADER */
+    .page-eyebrow {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease 0.1s forwards;
+    }
+
+    .page-title {
+      font-size: clamp(36px, 6vw, 56px);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      color: var(--white);
+      margin-bottom: 16px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease 0.25s forwards;
+    }
+
+    .page-sub {
+      font-size: 17px;
+      color: var(--text-dim);
+      font-weight: 300;
+      line-height: 1.65;
+      margin-bottom: 64px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease 0.4s forwards;
+    }
+
+    /* SECTION BLOCKS */
+    .el-section {
+      margin-bottom: 72px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .el-section.visible { opacity: 1; transform: none; }
+
+    .el-section-title {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-dimmer);
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* TYPOGRAPHY */
+    .type-showcase h1 { font-size: 48px; font-weight: 700; letter-spacing: -0.04em; line-height: 1.05; color: var(--white); margin-bottom: 12px; }
+    .type-showcase h2 { font-size: 36px; font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; color: var(--white); margin-bottom: 12px; }
+    .type-showcase h3 { font-size: 24px; font-weight: 600; letter-spacing: -0.02em; color: var(--white); margin-bottom: 12px; }
+    .type-showcase h4 { font-size: 18px; font-weight: 600; color: var(--white); margin-bottom: 12px; }
+    .type-showcase p { font-size: 17px; font-weight: 300; color: var(--text-dim); line-height: 1.7; margin-bottom: 16px; }
+    .type-showcase a { color: var(--accent); text-decoration: none; }
+    .type-showcase strong { color: var(--white); font-weight: 600; }
+    .type-showcase em { font-style: italic; }
+    .type-showcase code {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 14px;
+      color: #bf5af2;
+    }
+
+    blockquote {
+      border-left: 3px solid var(--accent);
+      padding: 16px 24px;
+      margin: 24px 0;
+      background: var(--surface);
+      border-radius: 0 12px 12px 0;
+    }
+
+    blockquote p {
+      font-size: 17px;
+      font-style: italic;
+      color: var(--text-dim);
+      margin: 0;
+      line-height: 1.65;
+    }
+
+    pre {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+      overflow-x: auto;
+      margin: 16px 0;
+    }
+
+    pre code {
+      background: none;
+      border: none;
+      padding: 0;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 14px;
+      line-height: 1.7;
+      color: #a1a1a6;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 32px 0;
+    }
+
+    /* BUTTONS */
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 16px;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 24px;
+      border-radius: 980px;
+      font-size: 15px;
+      font-weight: 500;
+      font-family: var(--font);
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    .btn:hover { transform: scale(1.03); }
+
+    .btn-primary { background: var(--accent); color: var(--white); }
+    .btn-primary:hover { background: #1a86e8; transform: scale(1.03); }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-dim);
+      border: 1px solid var(--border);
+    }
+    .btn-ghost:hover { border-color: rgba(255,255,255,0.3); color: var(--white); transform: scale(1.03); }
+
+    .btn-sm { padding: 9px 18px; font-size: 13px; }
+    .btn-lg { padding: 16px 32px; font-size: 17px; }
+
+    .btn-disabled { opacity: 0.35; pointer-events: none; }
+
+    /* FORM */
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-dim);
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 13px 18px;
+      color: var(--white);
+      font-family: var(--font);
+      font-size: 15px;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      resize: none;
+      -webkit-appearance: none;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(41,151,255,0.15);
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: var(--text-dimmer); }
+
+    .form-row-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    /* IMAGES */
+    .img-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .img-grid img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      transition: transform 0.3s, filter 0.3s;
+      filter: brightness(0.8);
+    }
+
+    .img-grid img:hover {
+      transform: scale(1.03);
+      filter: brightness(1);
+    }
+
+    .img-full {
+      width: 100%;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      margin-bottom: 12px;
+      display: block;
+      filter: brightness(0.85);
+    }
+
+    /* TABLE */
+    .table-wrap {
+      overflow-x: auto;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 15px;
+    }
+
+    thead th {
+      padding: 14px 20px;
+      text-align: left;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-dimmer);
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+
+    tbody td {
+      padding: 14px 20px;
+      color: var(--text-dim);
+      border-bottom: 1px solid var(--border);
+    }
+
+    tbody tr:last-child td { border-bottom: none; }
+
+    tbody tr:hover td { background: var(--surface); }
+
+    tfoot td {
+      padding: 14px 20px;
+      font-weight: 600;
+      color: var(--white);
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    /* LISTS */
+    .styled-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .styled-list li {
+      padding: 14px 20px;
+      font-size: 15px;
+      color: var(--text-dim);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.2s;
+    }
+
+    .styled-list li:last-child { border-bottom: none; }
+    .styled-list li:hover { background: var(--surface); }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 24px;
+      text-align: center;
+    }
+
+    footer p { font-size: 13px; color: var(--text-dimmer); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      .form-row-2 { grid-template-columns: 1fr; }
+      .img-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Omar Laila</a>
+      <a href="index.html" class="nav-back">
+        <i class="fa fa-arrow-left"></i> Home
+      </a>
+    </div>
+  </nav>
+
+  <div class="page-wrap">
+
+    <p class="page-eyebrow">Design System</p>
+    <h1 class="page-title">Elements</h1>
+    <p class="page-sub">A reference of all the UI components and typographic styles used across this site.</p>
+
+    <!-- TYPOGRAPHY -->
+    <div class="el-section">
+      <p class="el-section-title">Typography</p>
+      <div class="type-showcase">
+        <h1>Heading One</h1>
+        <h2>Heading Two</h2>
+        <h3>Heading Three</h3>
+        <h4>Heading Four</h4>
+        <hr>
+        <p>This is body text. This is <strong>bold</strong>, this is <em>italic</em>, and this is <code>inline code</code>. You can also include <a href="#">hyperlinks</a> and other inline styles.</p>
+        <hr>
+        <blockquote>
+          <p>A well-placed quote stands out from the page and draws attention to an important idea or insight.</p>
+        </blockquote>
+        <hr>
+        <p>Preformatted code block:</p>
+        <pre><code>i = 0
+
+while not deck.is_in_order():
+    print(f'Iteration {i}')
+    deck.shuffle()
+    i += 1
+
+print(f'Sorted in {i} iterations.')</code></pre>
+      </div>
+    </div>
+
+    <!-- BUTTONS -->
+    <div class="el-section">
+      <p class="el-section-title">Buttons</p>
+
+      <div class="btn-row">
+        <a href="#" class="btn btn-primary">Primary</a>
+        <a href="#" class="btn btn-ghost">Ghost</a>
+      </div>
+      <div class="btn-row">
+        <a href="#" class="btn btn-primary btn-lg">Large</a>
+        <a href="#" class="btn btn-primary">Default</a>
+        <a href="#" class="btn btn-primary btn-sm">Small</a>
+      </div>
+      <div class="btn-row">
+        <a href="#" class="btn btn-primary"><i class="fab fa-github"></i> With Icon</a>
+        <a href="#" class="btn btn-ghost"><i class="fa fa-arrow-right"></i> Ghost Icon</a>
+      </div>
+      <div class="btn-row">
+        <span class="btn btn-primary btn-disabled">Disabled</span>
+        <span class="btn btn-ghost btn-disabled">Disabled Ghost</span>
+      </div>
+    </div>
+
+    <!-- FORM -->
+    <div class="el-section">
+      <p class="el-section-title">Form Elements</p>
+
+      <div class="form-row-2">
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" placeholder="Your name">
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Category</label>
+        <select>
+          <option>— Select —</option>
+          <option>Design</option>
+          <option>Development</option>
+          <option>Music</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Message</label>
+        <textarea rows="5" placeholder="Write something…"></textarea>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-primary">Submit</button>
+        <button class="btn btn-ghost">Reset</button>
+      </div>
+    </div>
+
+    <!-- TABLE -->
+    <div class="el-section">
+      <p class="el-section-title">Table</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Item One</td><td>Ante turpis integer aliquet porttitor.</td><td>29.99</td></tr>
+            <tr><td>Item Two</td><td>Vis ac commodo adipiscing arcu aliquet.</td><td>19.99</td></tr>
+            <tr><td>Item Three</td><td>Morbi faucibus arcu accumsan lorem.</td><td>29.99</td></tr>
+            <tr><td>Item Four</td><td>Vitae integer tempus condimentum.</td><td>19.99</td></tr>
+            <tr><td>Item Five</td><td>Ante turpis integer aliquet porttitor.</td><td>29.99</td></tr>
+          </tbody>
+          <tfoot>
+            <tr><td colspan="2"></td><td>128.95</td></tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+
+    <!-- LISTS -->
+    <div class="el-section">
+      <p class="el-section-title">Lists</p>
+      <ul class="styled-list">
+        <li>Dolor pulvinar etiam.</li>
+        <li>Sagittis adipiscing lorem.</li>
+        <li>Felis enim feugiat dapibus.</li>
+        <li>Turpis nunc eget lorem.</li>
+        <li>Vitae integer tempus condimentum.</li>
+      </ul>
+    </div>
+
+    <!-- IMAGES -->
+    <div class="el-section">
+      <p class="el-section-title">Images</p>
+      <img src="images/pic04.jpg" alt="Full-width image" class="img-full">
+      <div class="img-grid">
+        <img src="images/pic01.jpg" alt="">
+        <img src="images/pic02.jpg" alt="">
+        <img src="images/pic03.jpg" alt="">
+        <img src="images/pic03.jpg" alt="">
+        <img src="images/pic01.jpg" alt="">
+        <img src="images/pic02.jpg" alt="">
+      </div>
+    </div>
+
+  </div><!-- /page-wrap -->
+
+  <footer>
+    <p>© 2024 Omar Laila · Berlin, Deutschland</p>
+  </footer>
+
+  <script>
+    const sections = document.querySelectorAll('.el-section');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 60);
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    sections.forEach(s => observer.observe(s));
+  </script>
+
+</body>
+</html>
