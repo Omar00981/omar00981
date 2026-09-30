@@ -1,0 +1,488 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <title>Logitech Z323 Speaker Covers — Omar Laila</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #000000;
+      --bg2: #0a0a0a;
+      --bg3: #111111;
+      --surface: #1a1a1a;
+      --surface2: #222222;
+      --border: rgba(255,255,255,0.08);
+      --text: #f5f5f7;
+      --text-dim: #a1a1a6;
+      --text-dimmer: #6e6e73;
+      --accent: #2997ff;
+      --white: #ffffff;
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(0,0,0,0.72);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid var(--border);
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      max-width: 980px;
+      width: 100%;
+      padding: 0 24px;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .nav-back {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      transition: gap 0.2s;
+    }
+
+    .nav-back:hover { gap: 10px; }
+    .nav-back i { font-size: 11px; }
+
+    /* ── HERO ── */
+    .project-hero {
+      padding-top: 52px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-image-wrap {
+      width: 100%;
+      max-height: 560px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-image-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 50%, var(--bg) 100%);
+    }
+
+    .hero-image-wrap img {
+      width: 100%;
+      height: 560px;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.6);
+      animation: heroScale 12s ease-in-out infinite alternate;
+    }
+
+    @keyframes heroScale {
+      from { transform: scale(1); }
+      to   { transform: scale(1.04); }
+    }
+
+    /* ── PROJECT CONTENT ── */
+    .project-content {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 72px 24px 120px;
+    }
+
+    .project-eyebrow {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease 0.1s forwards;
+    }
+
+    .project-title {
+      font-size: clamp(36px, 6vw, 64px);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      color: var(--white);
+      margin-bottom: 32px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease 0.25s forwards;
+    }
+
+    .project-meta {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+      padding: 24px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 48px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease 0.4s forwards;
+    }
+
+    .meta-item h4 {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-dimmer);
+      margin-bottom: 6px;
+    }
+
+    .meta-item p {
+      font-size: 15px;
+      color: var(--text-dim);
+    }
+
+    .project-body {
+      opacity: 0;
+      animation: fadeUp 0.7s ease 0.55s forwards;
+    }
+
+    .project-body p {
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--text-dim);
+      margin-bottom: 24px;
+    }
+
+    .project-body p:last-child { margin-bottom: 0; }
+
+    .project-body a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+      transition: opacity 0.2s;
+    }
+
+    .project-body a:hover { opacity: 0.75; }
+
+    /* ── CTA STRIP ── */
+    .cta-strip {
+      margin-top: 56px;
+      padding: 40px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.7s ease 0.7s forwards;
+    }
+
+    .cta-strip-text h3 {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+
+    .cta-strip-text p {
+      font-size: 15px;
+      color: var(--text-dim);
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: var(--white);
+      text-decoration: none;
+      padding: 13px 24px;
+      border-radius: 980px;
+      font-size: 15px;
+      font-weight: 500;
+      white-space: nowrap;
+      transition: background 0.2s, transform 0.2s;
+      flex-shrink: 0;
+    }
+
+    .cta-btn:hover {
+      background: #1a86e8;
+      transform: scale(1.03);
+    }
+
+    /* ── MORE PROJECTS ── */
+    .more-section {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      padding: 80px 24px;
+    }
+
+    .more-inner {
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .more-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-dimmer);
+      margin-bottom: 32px;
+    }
+
+    .more-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      gap: 0;
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-decoration: none;
+      max-width: 540px;
+    }
+
+    .more-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.4);
+    }
+
+    .more-card-img {
+      width: 140px;
+      height: 100px;
+      object-fit: cover;
+      flex-shrink: 0;
+      filter: brightness(0.8);
+      transition: filter 0.3s;
+    }
+
+    .more-card:hover .more-card-img { filter: brightness(1); }
+
+    .more-card-body {
+      padding: 20px 24px;
+    }
+
+    .more-card-tag {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+
+    .more-card-title {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+
+    .more-card-desc {
+      font-size: 13px;
+      color: var(--text-dim);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 24px;
+      text-align: center;
+    }
+
+    footer p {
+      font-size: 13px;
+      color: var(--text-dimmer);
+    }
+
+    /* ── REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── KEYFRAMES ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      .project-meta { gap: 20px; }
+      .cta-strip { flex-direction: column; align-items: flex-start; }
+      .more-card-img { width: 100px; height: 80px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+    }
+  
+    /* ── MORE PROJECTS LIST + IMAGE PAIRS ── */
+    .more-list { display: flex; flex-direction: column; gap: 16px; }
+    .img-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 15px 0 24px; }
+    .img-pair figure { margin: 0; }
+    .img-pair img { width: 100%; border-radius: 8px; display: block; }
+    .img-pair figcaption { font-size: 13px; color: var(--text-dimmer); margin-top: 8px; }
+    .project-body img { max-width: 100%; border-radius: 8px; margin: 15px 0 24px; display: block; }
+    @media (max-width: 600px) { .img-pair { grid-template-columns: 1fr; } }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Omar Laila</a>
+      <a href="index.html#projects" class="nav-back">
+        <i class="fa fa-arrow-left"></i> All Projects
+      </a>
+    </div>
+  </nav>
+
+  <!-- HERO IMAGE -->
+  <div class="project-hero">
+    <div class="hero-image-wrap">
+      <img src="images/BannerSPEAKER.jpg" alt="Logitech Z323 speakers with custom 3D-printed covers">
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="project-content">
+    <p class="project-eyebrow">3D Design · 3D Printing · Fusion</p>
+    <h1 class="project-title">Logitech Z323 Speaker Covers</h1>
+
+    <div class="project-meta">
+      <div class="meta-item">
+        <h4>Type</h4>
+        <p>Product Design</p>
+      </div>
+      <div class="meta-item">
+        <h4>Software</h4>
+        <p>Autodesk Fusion</p>
+      </div>
+      <div class="meta-item">
+        <h4>Manufacturing</h4>
+        <p>3D Printing</p>
+      </div>
+      <div class="meta-item">
+        <h4>Genre</h4>
+        <p>Design</p>
+      </div>
+    </div>
+
+    <div class="project-body">
+      <p>The Logitech Z323 is a great-sounding desk speaker system, but its glossy, curved black plastic doesn't suit every setup. For this project I designed a set of modern replacement covers from scratch and 3D printed them, giving the speakers a completely new look without changing how they work.</p>
+
+      <img src="images/speaker.jpg" alt="The finished 3D-printed speaker covers">
+
+      <p>I modelled the covers in Autodesk Fusion as a clean, angled wedge with a flat matte finish. Every opening is positioned around the speaker's real layout, so the drivers, the bass port and the volume knob all stay uncovered and easy to reach.</p>
+
+      <div class="img-pair">
+        <figure>
+          <img src="images/speaker_before.jpg" alt="Logitech Z323 speakers before the covers">
+          <figcaption>Before: the original glossy Logitech Z323 speakers</figcaption>
+        </figure>
+        <figure>
+          <img src="images/Speaker_after.jpg" alt="Logitech Z323 speakers with the printed covers fitted">
+          <figcaption>After: the same speakers with the printed covers</figcaption>
+        </figure>
+      </div>
+
+      <p>The result is a cleaner, more geometric desk setup that matches the rest of my workspace, and the speakers stay fully usable with all their controls in reach.</p>
+    </div>
+  </div>
+
+    <!-- MORE PROJECTS -->
+  <div class="more-section">
+    <div class="more-inner reveal">
+      <p class="more-label">More Projects</p>
+      <div class="more-list">
+        <a href="generic.html" class="more-card">
+          <img src="images/pic04.jpg" alt="Escape the Professor!" class="more-card-img">
+          <div class="more-card-body">
+            <p class="more-card-tag">PYTHON · GAME DEV</p>
+            <p class="more-card-title">Escape the Professor!</p>
+            <p class="more-card-desc">A video game about a student trying to escape the professor.</p>
+          </div>
+        </a>
+        <a href="generic2.html" class="more-card">
+          <img src="images/HMI.png" alt="Sunglasses Production Line" class="more-card-img">
+          <div class="more-card-body">
+            <p class="more-card-tag">PYTHON · ENGINEERING</p>
+            <p class="more-card-title">Sunglasses Production Line</p>
+            <p class="more-card-desc">A simulated production line with live monitoring in Grafana.</p>
+          </div>
+        </a>
+        <a href="generic4.html" class="more-card">
+          <img src="images/thumb_lamp.jpg" alt="Tile Lamp" class="more-card-img">
+          <div class="more-card-body">
+            <p class="more-card-tag">3D DESIGN · 3D PRINTING</p>
+            <p class="more-card-title">Tile Lamp</p>
+            <p class="more-card-desc">A 3D-printed lamp built from individually designed parts.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Omar Laila · Berlin, Deutschland</p>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
